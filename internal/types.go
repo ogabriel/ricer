@@ -1,4 +1,4 @@
-package setup
+package internal
 
 type Setup struct {
 	Name string

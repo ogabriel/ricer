@@ -5,8 +5,6 @@ import (
 	"os"
 	"os/exec"
 	"strings"
-
-	"github.com/ogabriel/ricer/internal/setup"
 )
 
 func Run(commands []string) {
@@ -18,7 +16,7 @@ func Run(commands []string) {
 	cmd.Run()
 }
 
-func RunSetup(setup setup.Setup) {
+func RunSetup(setup Setup) {
 	if setup.Before != nil {
 		fmt.Println(setup.Name)
 		setup.Before()
@@ -35,7 +33,7 @@ func RunSetup(setup setup.Setup) {
 	}
 }
 
-func RunSetups(setups []setup.Setup) {
+func RunSetups(setups []Setup) {
 	for _, setup := range setups {
 		if setup.Before != nil {
 			fmt.Println(setup.Name)
