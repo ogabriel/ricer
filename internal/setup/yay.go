@@ -13,6 +13,6 @@ var Yay = internal.Setup{
 			"makepkg -si",
 		}
 
-		internal.Run(commands)
+		internal.RunCommands(commands)
 	},
 }
