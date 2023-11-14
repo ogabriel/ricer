@@ -1,6 +1,8 @@
 package setup
 
-var Yay = Setup{
+import "github.com/ogabriel/ricer/internal"
+
+var Yay = internal.Setup{
 	Name: "yay",
 	Before: func() {
 		commands := []string{
@@ -11,6 +13,6 @@ var Yay = Setup{
 			"makepkg -si",
 		}
 
-		Run(commands)
+		internal.Run(commands)
 	},
 }
