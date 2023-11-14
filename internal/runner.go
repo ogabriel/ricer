@@ -7,16 +7,24 @@ import (
 	"strings"
 )
 
-func Run(commands []string) {
-	command := strings.Join(commands, ";")
-	cmd := exec.Command("sh", "-c", command)
+func run(command string) {
+	cmd := exec.Command("/bin/sh", "-c", command)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Run()
 }
 
-func RunSetup(setup Setup) {
+func RunCommand(command string) {
+	run(command)
+}
+
+func RunCommands(commands []string) {
+	command := strings.Join(commands, " && ")
+	run(command)
+}
+
+func RunCommandsSetup(setup Setup) {
 	if setup.Before != nil {
 		fmt.Println(setup.Name)
 		setup.Before()
@@ -24,7 +32,7 @@ func RunSetup(setup Setup) {
 
 	if setup.Packages != nil {
 		fmt.Println(setup.Name)
-		Run(setup.Packages)
+		RunCommands(setup.Packages)
 	}
 
 	if setup.After != nil {
@@ -33,7 +41,7 @@ func RunSetup(setup Setup) {
 	}
 }
 
-func RunSetups(setups []Setup) {
+func RunCommandsSetups(setups []Setup) {
 	for _, setup := range setups {
 		if setup.Before != nil {
 			fmt.Println(setup.Name)
@@ -49,7 +57,7 @@ func RunSetups(setups []Setup) {
 	}
 
 	if packages != nil {
-		Run(packages)
+		RunCommands(packages)
 	}
 
 	for _, setup := range setups {
