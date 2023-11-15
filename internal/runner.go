@@ -24,6 +24,12 @@ func RunCommands(commands []string) {
 	run(command)
 }
 
+func RunPackages(packages []string) {
+	packages = append([]string{"yay -Syu --needed --noconfirm"}, packages...)
+	command := strings.Join(packages, " ")
+	RunCommand(command)
+}
+
 func RunSetup(setup Setup) {
 	if setup.Before != nil {
 		fmt.Println(setup.Name)
@@ -32,7 +38,7 @@ func RunSetup(setup Setup) {
 
 	if setup.Packages != nil {
 		fmt.Println(setup.Name)
-		RunCommands(setup.Packages)
+		RunPackages(setup.Packages)
 	}
 
 	if setup.After != nil {
@@ -58,9 +64,7 @@ func RunSetups(setups []Setup) {
 	}
 
 	if packages != nil {
-		packages = append([]string{"yay -Syu --needed --noconfirm"}, packages...)
-		command := strings.Join(packages, " ")
-		RunCommand(command)
+		RunPackages(packages)
 	}
 
 	for _, setup := range setups {
