@@ -31,6 +31,7 @@ var HyprlandGit = internal.Profile{
 		setup.Thunar,
 		setup.Gnome,
 		setup.HyprlandGit,
+		setup.Theme,
 		extraHyprland,
 	},
 }

@@ -31,6 +31,7 @@ var Hyprland = internal.Profile{
 		setup.Thunar,
 		setup.Gnome,
 		setup.Hyprland,
+		setup.Theme,
 		extraHyprland,
 	},
 }
