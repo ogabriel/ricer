@@ -1,5 +1,10 @@
 package internal
 
+type Profile struct {
+	Name   string
+	Setups []Setup
+}
+
 type Setup struct {
 	Name string
 	// PackageInstaller Installer
