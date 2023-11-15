@@ -41,7 +41,7 @@ func RunCommandsSetup(setup Setup) {
 	}
 }
 
-func RunCommandsSetups(setups []Setup) {
+func RunSetups(setups []Setup) {
 	for _, setup := range setups {
 		if setup.Before != nil {
 			fmt.Println("Running before for", setup.Name)
@@ -59,7 +59,8 @@ func RunCommandsSetups(setups []Setup) {
 
 	if packages != nil {
 		packages = append([]string{"yay -Syu --needed --noconfirm"}, packages...)
-		RunCommands(packages)
+		command := strings.Join(packages, " ")
+		RunCommand(command)
 	}
 
 	for _, setup := range setups {
@@ -74,6 +75,6 @@ func RunCommandsSetups(setups []Setup) {
 func RunProfile(profile Profile) {
 	fmt.Println("Running profile", profile.Name)
 	if profile.Setups != nil {
-		RunCommandsSetups(profile.Setups)
+		RunSetups(profile.Setups)
 	}
 }
