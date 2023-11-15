@@ -5,7 +5,7 @@ import "github.com/ogabriel/ricer/internal"
 var HyprlandGit = internal.Setup{
 	Name: "hyprland-git",
 	Before: func() {
-		internal.RunCommand("sudo pacman -R xdg-desktop-portal-gtk xdg-desktop-portal-wlr")
+		internal.RunCommand("sudo pacman -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-wlr")
 	},
 	Packages: []string{
 		"hyprland-git",
