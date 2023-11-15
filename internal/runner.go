@@ -44,11 +44,12 @@ func RunCommandsSetup(setup Setup) {
 func RunCommandsSetups(setups []Setup) {
 	for _, setup := range setups {
 		if setup.Before != nil {
-			fmt.Println(setup.Name)
+			fmt.Println("Running before for", setup.Name)
 			setup.Before()
 		}
 	}
 
+	fmt.Println("Installing packages...")
 	var packages []string
 	for _, setup := range setups {
 		if setup.Packages != nil {
@@ -57,14 +58,22 @@ func RunCommandsSetups(setups []Setup) {
 	}
 
 	if packages != nil {
+		packages = append([]string{"sudo yay -Syu --needed"}, packages...)
 		RunCommands(packages)
 	}
 
 	for _, setup := range setups {
 		if setup.After != nil {
-			fmt.Println(setup.Name)
+			fmt.Println("Running after for", setup.Name)
 			setup.After()
 		}
 	}
 
+}
+
+func RunProfile(profile Profile) {
+	fmt.Println("Running profile", profile.Name)
+	if profile.Setups != nil {
+		RunCommandsSetups(profile.Setups)
+	}
 }
