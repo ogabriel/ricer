@@ -22,6 +22,8 @@ var installProfileCmd = &cobra.Command{
 			internal.RunProfile(profile.Hyprland)
 		} else if args[0] == "hyprland-git" {
 			internal.RunProfile(profile.HyprlandGit)
+		} else {
+			fmt.Println("Profile not found")
 		}
 	},
 }
