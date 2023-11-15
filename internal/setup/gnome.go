@@ -7,6 +7,7 @@ var Gnome = internal.Setup{
 	Packages: []string{
 		"gnome-calculator",
 		"gnome-keyring",
+		"gnome-system-monitor",
 		"polkit-gnome",
 	},
 }
