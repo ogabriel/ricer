@@ -8,7 +8,7 @@ import (
 )
 
 var installProfileCmd = &cobra.Command{
-	Use:   "installProfile",
+	Use:   "install-profile",
 	Short: "Install any profile",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
