@@ -58,7 +58,7 @@ func RunCommandsSetups(setups []Setup) {
 	}
 
 	if packages != nil {
-		packages = append([]string{"sudo yay -Syu --needed"}, packages...)
+		packages = append([]string{"yay -Syu --needed --noconfirm"}, packages...)
 		RunCommands(packages)
 	}
 
