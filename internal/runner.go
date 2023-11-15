@@ -24,7 +24,7 @@ func RunCommands(commands []string) {
 	run(command)
 }
 
-func RunCommandsSetup(setup Setup) {
+func RunSetup(setup Setup) {
 	if setup.Before != nil {
 		fmt.Println(setup.Name)
 		setup.Before()
