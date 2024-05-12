@@ -1,0 +1,28 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - .github/**
+      - .gitignore
+      - .tool-versions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Go
+      uses: actions/setup-go@v5
+    - name: Build
+      run: go build -o ricer
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ricer
+        path: ricer
