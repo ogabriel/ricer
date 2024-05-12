@@ -7,7 +7,7 @@ on:
     paths-ignore:
       - 'README.md'
       - 'LICENSE'
-      - .github/**
+      # - .github/**
       - .gitignore
       - .tool-versions
 
@@ -20,7 +20,7 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Build
-      run: go build -o ricer
+      run: CGO_ENABLED=0 go build -o ricer
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
