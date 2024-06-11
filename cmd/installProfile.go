@@ -12,7 +12,7 @@ import (
 )
 
 var installProfileCmd = &cobra.Command{
-	Use:   "install-profile",
+	Use:   "install profile",
 	Short: "Install any profile",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
